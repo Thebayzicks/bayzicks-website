@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Remote Work Portfolio Templates | Bayzicks</title>
+<meta name="description" content="Free portfolio templates for remote job beginners: sales, virtual assistant, customer support and social media manager. Pick yours, edit it on your phone, and download it as a PDF.">
+<meta property="og:title" content="Free Remote Work Portfolio Templates | Bayzicks">
+<meta property="og:description" content="Pick your role, edit a ready-made portfolio, download it as a PDF. Free, no sign-up.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #16302B;
+    --forest-deep: #0F221E;
+    --parchment: #F0E6D2;
+    --parchment-dim: #E7DBC0;
+    --amber: #E8A33D;
+    --amber-deep: #C97F1F;
+    --sage: #7FA98F;
+    --ink: #22201B;
+    --ink-soft: #4A463D;
+    --accent: #16302B;
+    color-scheme: light;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--parchment); color: var(--ink);
+    font-family: 'Karla', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6;
+    overflow-x: hidden;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; margin: 0; color: var(--forest); letter-spacing: -0.01em; }
+  p { margin: 0; }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+
+  /* NAV */
+  .site-nav { background: var(--forest-deep); padding: 14px 0; padding-top: calc(14px + env(safe-area-inset-top, 0px)); }
+  .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 22px; display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.25rem; color: var(--parchment); text-decoration: none; }
+  .nav-back { color: #D9CFB4; font-size: 0.95rem; text-decoration: none; }
+  .nav-back:hover { color: var(--parchment); }
+
+  /* HERO */
+  .hero { background: var(--forest); color: var(--parchment); padding: 56px 0 64px; text-align: center; }
+  .hero .eyebrow { color: var(--sage); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 14px; }
+  .hero h1 { color: var(--parchment); font-size: clamp(2rem, 5vw, 3.1rem); font-weight: 600; line-height: 1.15; max-width: 720px; margin: 0 auto 18px; }
+  .hero p { color: #D9CFB4; max-width: 560px; margin: 0 auto; font-size: 1.08rem; }
+  .steps { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 28px; padding: 0; list-style: none; }
+  .steps li { background: rgba(240,230,210,0.08); border: 1px solid rgba(240,230,210,0.18); border-radius: 999px; padding: 7px 16px; font-size: 0.92rem; color: var(--parchment); }
+  .steps b { color: var(--amber); margin-right: 4px; }
+
+  /* ROLE PICKER */
+  .section { padding: 48px 0 8px; }
+  .section-label { display: block; color: var(--amber-deep); font-weight: 700; font-size: 0.85rem; margin-bottom: 8px; }
+  .section h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); font-weight: 600; margin-bottom: 20px; }
+  .role-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  @media (max-width: 860px) { .role-grid { grid-template-columns: repeat(2, 1fr); } }
+  .role-card {
+    text-align: left; background: #FBF6EA; border: 2px solid transparent; border-radius: 8px; padding: 18px 16px;
+    cursor: pointer; font-family: inherit; color: var(--ink); transition: border-color .15s, transform .15s; width: 100%;
+  }
+  .role-card:hover { transform: translateY(-2px); }
+  .role-card:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+  .role-card[aria-pressed="true"] { border-color: var(--forest); background: #fff; }
+  .role-card .ico { font-size: 1.6rem; display: block; margin-bottom: 8px; }
+  .role-card strong { display: block; font-family: 'Fraunces', serif; color: var(--forest); font-size: 1.05rem; line-height: 1.25; margin-bottom: 4px; }
+  .role-card span.d { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.4; display: block; }
+
+  /* WORKSPACE */
+  .workspace { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 8px; }
+  @media (max-width: 900px) { .workspace { grid-template-columns: 1fr; } }
+  .view-toggle { display: none; position: sticky; top: 0; z-index: 20; background: var(--parchment); padding: 10px 0; gap: 8px; }
+  @media (max-width: 900px) {
+    .view-toggle { display: flex; }
+    .workspace[data-view="edit"] .preview-col { display: none; }
+    .workspace[data-view="preview"] .editor { display: none; }
+  }
+  .view-toggle button { flex: 1; padding: 12px; border-radius: 6px; border: 1.5px solid var(--forest); background: transparent; color: var(--forest); font-weight: 700; font-family: inherit; font-size: 1rem; cursor: pointer; }
+  .view-toggle button[aria-selected="true"] { background: var(--forest); color: var(--parchment); }
+
+  .editor { background: #FBF6EA; border-radius: 10px; padding: 22px 20px; }
+  .editor details { border-bottom: 1px solid rgba(22,48,43,0.15); padding: 4px 0; }
+  .editor details:last-of-type { border-bottom: 0; }
+  .editor summary { cursor: pointer; font-family: 'Fraunces', serif; font-weight: 600; color: var(--forest); font-size: 1.08rem; padding: 12px 0; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .editor summary::-webkit-details-marker { display: none; }
+  .editor summary::after { content: "+"; font-family: 'Karla', sans-serif; font-size: 1.3rem; color: var(--amber-deep); }
+  .editor details[open] summary::after { content: "–"; }
+  .editor .inner { padding-bottom: 14px; }
+  .tip { background: rgba(232,163,61,0.14); border-left: 3px solid var(--amber); padding: 9px 12px; border-radius: 4px; font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 14px; }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-weight: 700; font-size: 0.85rem; color: var(--forest); margin-bottom: 4px; }
+  .field input, .field textarea {
+    width: 100%; padding: 11px 12px; border-radius: 5px; border: 1.5px solid rgba(22,48,43,0.3);
+    font-family: 'Karla', sans-serif; font-size: 1rem; background: #fff; color: var(--ink);
+  }
+  .field textarea { min-height: 84px; resize: vertical; }
+  .field input:focus-visible, .field textarea:focus-visible { outline: 3px solid var(--amber); outline-offset: 1px; }
+  .field small { display: block; color: var(--ink-soft); font-size: 0.8rem; margin-top: 3px; }
+  .proj { background: #fff; border-radius: 6px; padding: 12px; margin-bottom: 12px; border: 1px solid rgba(22,48,43,0.12); }
+  .proj h4 { margin: 0 0 8px; font-size: 0.9rem; color: var(--amber-deep); }
+  .swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+  .swatch { width: 38px; height: 38px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 1.5px rgba(22,48,43,0.3); cursor: pointer; }
+  .swatch[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--ink); }
+  .photo-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .small-btn { padding: 9px 14px; border-radius: 5px; border: 1.5px solid var(--forest); background: transparent; color: var(--forest); font-family: inherit; font-weight: 700; cursor: pointer; font-size: 0.9rem; }
+  .small-btn:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+
+  .btn { display: inline-block; padding: 14px 26px; border-radius: 5px; font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; border: none; font-family: 'Karla', sans-serif; text-align: center; }
+  .btn-primary { background: var(--amber); color: var(--forest-deep); }
+  .btn-primary:hover { box-shadow: 0 6px 18px rgba(232,163,61,0.35); }
+  .btn-dark { background: var(--forest); color: var(--parchment); }
+  .btn:focus-visible { outline: 3px solid var(--sage); outline-offset: 2px; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0 6px; }
+  .actions .btn { flex: 1 1 auto; }
+  .reset-link { background: none; border: none; color: var(--ink-soft); text-decoration: underline; cursor: pointer; font-family: inherit; font-size: 0.88rem; padding: 6px 0; }
+  .save-note { font-size: 0.85rem; color: var(--ink-soft); }
+
+  /* PORTFOLIO PREVIEW (the actual template) */
+  .preview-col { position: sticky; top: 16px; }
+  @media (max-width: 900px) { .preview-col { position: static; } }
+  .pf {
+    background: #fff; color: #1f1f1f; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 10px 40px rgba(15,34,30,0.14); font-family: 'Karla', sans-serif;
+  }
+  .pf-head { background: var(--accent); color: #fff; padding: 34px 30px 30px; display: flex; gap: 22px; align-items: center; }
+  .pf-photo { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.85); flex-shrink: 0; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 600; color: #fff; }
+  .pf-head h1 { color: #fff; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 600; line-height: 1.15; margin-bottom: 4px; overflow-wrap: anywhere; }
+  .pf-head .pf-title { font-size: 1.08rem; font-weight: 600; opacity: 0.95; }
+  .pf-head .pf-loc { font-size: 0.9rem; opacity: 0.8; margin-top: 4px; }
+  @media (max-width: 520px) { .pf-head { flex-direction: column; text-align: center; padding: 28px 20px 24px; } }
+  .pf-body { padding: 26px 30px 30px; }
+  @media (max-width: 520px) { .pf-body { padding: 22px 20px 26px; } }
+  .pf-sec { margin-bottom: 24px; }
+  .pf-sec:last-child { margin-bottom: 0; }
+  .pf-sec h2 { font-family: 'Fraunces', serif; font-size: 1.05rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); display: inline-block; }
+  .pf-about { font-size: 1rem; color: #333; white-space: pre-line; }
+  .pf-chips { display: flex; flex-wrap: wrap; gap: 7px; padding: 0; margin: 0; list-style: none; }
+  .pf-chips li { border: 1.5px solid var(--accent); color: var(--accent); border-radius: 999px; padding: 4px 12px; font-size: 0.88rem; font-weight: 600; }
+  .pf-chips.soft li { border-color: #ddd; color: #444; }
+  .pf-projects { display: grid; gap: 14px; }
+  .pf-proj { border: 1px solid #e6e6e6; border-left: 4px solid var(--accent); border-radius: 6px; padding: 14px 16px; break-inside: avoid; }
+  .pf-proj h3 { font-family: 'Fraunces', serif; color: #1f1f1f; font-size: 1.05rem; font-weight: 600; margin-bottom: 4px; }
+  .pf-proj p { font-size: 0.95rem; color: #444; white-space: pre-line; }
+  .pf-proj .res { margin-top: 6px; font-weight: 700; color: var(--accent); }
+  .pf-proj a { display: inline-block; margin-top: 6px; font-size: 0.9rem; color: var(--accent); font-weight: 700; overflow-wrap: anywhere; }
+  .pf-quote { background: #f6f6f4; border-radius: 6px; padding: 16px 18px; font-style: italic; color: #333; break-inside: avoid; }
+  .pf-quote cite { display: block; margin-top: 8px; font-style: normal; font-weight: 700; color: var(--accent); font-size: 0.9rem; }
+  .pf-list { margin: 0; padding-left: 18px; color: #333; }
+  .pf-contact { display: grid; gap: 6px; font-size: 0.98rem; }
+  .pf-contact a { color: #1f1f1f; overflow-wrap: anywhere; }
+  .pf-contact b { color: var(--accent); display: inline-block; min-width: 86px; }
+  .pf-foot { text-align: center; font-size: 0.75rem; color: #999; padding: 0 0 16px; }
+
+  /* NEXT STEPS */
+  .next { background: var(--forest); color: var(--parchment); margin-top: 56px; padding: 48px 0; }
+  .next h2 { color: var(--parchment); font-size: clamp(1.5rem, 3.4vw, 2rem); margin-bottom: 18px; }
+  .next ol { padding-left: 20px; max-width: 680px; color: #D9CFB4; }
+  .next li { margin-bottom: 10px; }
+  .next li b { color: var(--parchment); }
+  .next .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+  .btn-ghost { background: transparent; color: var(--parchment); border: 1.5px solid rgba(240,230,210,0.45); }
+  footer { background: var(--forest-deep); color: #9FB3A9; text-align: center; padding: 22px; font-size: 0.85rem; }
+
+  /* PRINT: only the portfolio */
+  @media print {
+    @page { margin: 12mm; }
+    body { background: #fff; }
+    body > *:not(main) { display: none !important; }
+    main > *:not(#builder) { display: none !important; }
+    .pick-wrap { display: none !important; }
+    #builder { padding: 0 !important; }
+    #builder > .wrap { padding: 0 !important; max-width: none !important; }
+    .editor, .view-toggle, .preview-actions { display: none !important; }
+    .workspace { display: block !important; }
+    .preview-col { display: block !important; position: static !important; }
+    .pf { box-shadow: none; border-radius: 0; }
+    .pf-head, .pf-chips li, .pf-proj { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pf-quote { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pf-head { flex-direction: row !important; text-align: left !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Bayzicks</a>
+    <a href="/" class="nav-back">← Back to home</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Free · No sign-up</span>
+    <h1>Remote work portfolio templates, ready to edit.</h1>
+    <p>Pick your role, swap in your details right here on your phone, and download your portfolio as a PDF.</p>
+    <ul class="steps">
+      <li><b>1</b>Pick your role</li>
+      <li><b>2</b>Edit the template</li>
+      <li><b>3</b>Download your PDF</li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="section" id="builder">
+    <div class="wrap pick-wrap">
+      <span class="section-label">Step 1</span>
+      <h2>Which role are you going for?</h2>
+      <div class="role-grid" id="roleGrid" role="group" aria-label="Choose a role"></div>
+
+      <div style="height:34px"></div>
+      <span class="section-label">Step 2 &amp; 3</span>
+      <h2>Edit it, then download it.</h2>
+    </div>
+
+    <div class="wrap">
+      <div class="view-toggle" role="tablist" aria-label="Edit or preview">
+        <button role="tab" aria-selected="true" data-view="edit">✏️ Edit</button>
+        <button role="tab" aria-selected="false" data-view="preview">👀 Preview</button>
+      </div>
+
+      <div class="workspace" id="workspace" data-view="edit">
+        <!-- EDITOR -->
+        <form class="editor" id="editor" onsubmit="return false">
+          <details open>
+            <summary>Your details</summary>
+            <div class="inner">
+              <div class="tip">Use a clear, friendly photo, just like on LinkedIn. Your headline should say exactly the job you want.</div>
+              <div class="field"><label for="f-name">Full name</label><input id="f-name" data-key="name" autocomplete="name"></div>
+              <div class="field"><label for="f-headline">Headline (the job you want)</label><input id="f-headline" data-key="headline"></div>
+              <div class="field"><label for="f-location">Location &amp; availability</label><input id="f-location" data-key="location"><small>Mention your time zone. Remote employers care about it.</small></div>
+              <div class="field">
+                <label>Photo (optional)</label>
+                <div class="photo-row">
+                  <label class="small-btn" for="f-photo" style="display:inline-block">Upload photo</label>
+                  <input id="f-photo" type="file" accept="image/*" style="position:absolute;left:-9999px">
+                  <button type="button" class="small-btn" id="removePhoto">Remove</button>
+                </div>
+              </div>
+              <div class="field">
+                <label>Colour</label>
+                <div class="swatches" id="swatches"></div>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>About me</summary>
+            <div class="inner">
+              <div class="tip">2–4 sentences: who you help, what you do, and one result or strength. Skip "hardworking and God-fearing". Show it instead.</div>
+              <div class="field"><label for="f-about">About</label><textarea id="f-about" data-key="about" rows="5"></textarea></div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Skills &amp; tools</summary>
+            <div class="inner">
+              <div class="tip">Copy keywords from the job posts you're applying to. Separate each one with a comma.</div>
+              <div class="field"><label for="f-skills">Skills</label><textarea id="f-skills" data-key="skills" rows="3"></textarea></div>
+              <div class="field"><label for="f-tools">Tools I use</label><textarea id="f-tools" data-key="tools" rows="3"></textarea></div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Work samples &amp; projects</summary>
+            <div class="inner">
+              <div class="tip">No experience yet? Do sample projects and call them "sample". That's honest and it still counts. Add a link to each one (Google Drive, Canva or Notion, set to "anyone with the link").</div>
+              <div id="projects"></div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Testimonial</summary>
+            <div class="inner">
+              <div class="tip">Help one small business for two weeks, then ask them for 2–3 sentences about working with you. Leave this empty until you have a real one.</div>
+              <div class="field"><label for="f-quote">What they said</label><textarea id="f-quote" data-key="quote" rows="3"></textarea></div>
+              <div class="field"><label for="f-quoteby">Name &amp; business</label><input id="f-quoteby" data-key="quoteBy"></div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Certificates &amp; training</summary>
+            <div class="inner">
+              <div class="tip">Free certificates count. HubSpot Academy has free ones for marketing, sales and customer service. One per line.</div>
+              <div class="field"><label for="f-certs">Certificates</label><textarea id="f-certs" data-key="certs" rows="3"></textarea></div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Contact</summary>
+            <div class="inner">
+              <div class="tip">Use a professional email, like firstname.lastname@gmail.com.</div>
+              <div class="field"><label for="f-email">Email</label><input id="f-email" data-key="email" type="email" autocomplete="email"></div>
+              <div class="field"><label for="f-linkedin">LinkedIn link</label><input id="f-linkedin" data-key="linkedin" inputmode="url"></div>
+              <div class="field"><label for="f-phone">WhatsApp / phone (optional)</label><input id="f-phone" data-key="phone" inputmode="tel"></div>
+            </div>
+          </details>
+
+          <div class="actions">
+            <button type="button" class="btn btn-primary" data-action="download">⬇ Download PDF</button>
+          </div>
+          <p class="save-note" id="saveNote">Your edits are saved on this device automatically.</p>
+          <button type="button" class="reset-link" id="resetBtn">Start over with the example template</button>
+        </form>
+
+        <!-- PREVIEW -->
+        <div class="preview-col">
+          <div class="pf" id="pf"></div>
+          <div class="actions preview-actions">
+            <button type="button" class="btn btn-primary" data-action="download">⬇ Download PDF</button>
+          </div>
+          <p class="save-note preview-actions">On your phone, tap Download, then choose <b>"Save as PDF"</b> as the printer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="next">
+    <div class="wrap">
+      <h2>Got your PDF? Here's what to do next.</h2>
+      <ol>
+        <li><b>Upload it to Google Drive</b> and set sharing to "Anyone with the link can view".</li>
+        <li><b>Put that link everywhere:</b> your CV, LinkedIn "Featured" section, and every job application.</li>
+        <li><b>Replace sample projects with real ones</b> as you get them, then download a fresh PDF.</li>
+        <li><b>Apply consistently.</b> Five to ten good, tailored applications a day beats 100 in one night.</li>
+      </ol>
+      <div class="cta-row">
+        <a href="/#email" class="btn btn-primary">Get the free 25 Remote Skills guide</a>
+        <a href="/#offers" class="btn btn-ghost">Book a free 30-min session</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© Bayzicks · Digital work, explained from the start</footer>
+
+<script>
+(function () {
+  var COLORS = [
+    { name: 'Forest', v: '#16302B' },
+    { name: 'Navy', v: '#1D3A6B' },
+    { name: 'Plum', v: '#5B2A5E' },
+    { name: 'Terracotta', v: '#A4472C' },
+    { name: 'Charcoal', v: '#2B2B2B' },
+    { name: 'Teal', v: '#0F6466' }
+  ];
+
+  var COMMON = {
+    name: 'Your Full Name',
+    location: 'Lagos, Nigeria · Open to remote work · WAT (GMT+1)',
+    email: 'yourname@gmail.com',
+    linkedin: 'linkedin.com/in/yourname',
+    phone: ''
+  };
+
+  var TEMPLATES = {
+    sales: {
+      icon: '📈', label: 'Sales & Appointment Setter', desc: 'Closers, SDRs, appointment setters, deal closers.',
+      headline: 'Sales Representative | Appointment Setter',
+      about: 'I help businesses turn conversations into paying customers. I\'ve sold products directly through WhatsApp and Instagram, followed up with leads until they converted, and kept every deal organised. I\'m confident on calls, comfortable with rejection, and I track my numbers.',
+      skills: 'Lead generation, Cold outreach, Follow-ups, Objection handling, Discovery calls, Appointment setting, CRM updates, Closing',
+      tools: 'HubSpot CRM, Google Sheets, WhatsApp Business, LinkedIn, Calendly, Zoom',
+      projects: [
+        { title: 'WhatsApp sales campaign (my own business)', desc: 'Sold skincare products through WhatsApp status and broadcast lists, with a simple follow-up routine for every enquiry.', result: 'Result: 40+ orders in 2 weeks', link: '' },
+        { title: 'Cold outreach script (sample)', desc: 'Wrote a 3-message LinkedIn outreach sequence for a B2B software company, with a call-to-action to book a demo.', result: '', link: '' },
+        { title: 'Sales call breakdown (sample)', desc: 'Recorded a mock discovery call and wrote up how I handled the "it\'s too expensive" objection.', result: '', link: '' }
+      ],
+      quote: '', quoteBy: '',
+      certs: 'HubSpot Academy: Inbound Sales (free)\nHubSpot Academy: Sales Software (free)'
+    },
+    va: {
+      icon: '🗂️', label: 'Virtual Assistant', desc: 'Admin, inbox & calendar, research, executive support.',
+      headline: 'Virtual Assistant | Admin & Executive Support',
+      about: 'I help busy founders and small business owners get hours back in their week. I manage inboxes and calendars, organise files, research, and keep things moving so nothing falls through the cracks. I\'m organised, quick to respond, and I communicate clearly.',
+      skills: 'Inbox management, Calendar scheduling, Research, Data entry, Document formatting, Travel planning, Writing SOPs, Customer follow-up',
+      tools: 'Google Workspace, Microsoft Office, Notion, Trello, Canva, Calendly, Zoom, Slack',
+      projects: [
+        { title: 'Inbox & calendar system (sample)', desc: 'Built a Gmail label-and-filter system and a weekly calendar layout for a fictional small business owner, with a short guide on how it works.', result: '', link: '' },
+        { title: 'Process document / SOP (sample)', desc: 'Wrote a step-by-step guide for how a small online shop processes new orders, from payment to delivery.', result: '', link: '' },
+        { title: 'Research report (sample)', desc: 'Compared 5 email marketing tools on price, features and ease of use, and summarised it in one clear page.', result: '', link: '' }
+      ],
+      quote: '', quoteBy: '',
+      certs: 'Google Workspace basics (self-taught)\nHubSpot Academy: Email Marketing (free)'
+    },
+    support: {
+      icon: '💬', label: 'Customer Support', desc: 'Live chat, email support, help desk, customer success.',
+      headline: 'Customer Support Specialist | Remote',
+      about: 'I help customers feel heard and get their problems solved fast. I\'m calm with frustrated customers, clear in writing, and I follow up until every issue is closed. I enjoy turning unhappy customers into loyal ones.',
+      skills: 'Email & live chat support, Ticket handling, Empathy, Clear written communication, Problem solving, Product knowledge, Writing FAQs, Escalation',
+      tools: 'Zendesk, Freshdesk, Intercom, Gmail, Google Sheets, Slack, WhatsApp Business',
+      projects: [
+        { title: 'Replies to difficult customers (sample)', desc: 'Wrote 5 replies to real-life style complaints (late delivery, wrong item, refund request, angry review, billing error), showing how I calm the situation and solve the problem.', result: '', link: '' },
+        { title: 'FAQ / help-centre page (sample)', desc: 'Drafted a 10-question FAQ page for an online store to cut repeat questions.', result: '', link: '' },
+        { title: 'Customer feedback summary (sample)', desc: 'Read 50 public reviews of a popular app, grouped the complaints into themes and suggested 3 fixes.', result: '', link: '' }
+      ],
+      quote: '', quoteBy: '',
+      certs: 'HubSpot Academy: Customer Service (free)'
+    },
+    social: {
+      icon: '📱', label: 'Social Media Manager', desc: 'Content, captions, community, Instagram & TikTok growth.',
+      headline: 'Social Media Manager | Content & Community',
+      about: 'I help small businesses show up consistently online and turn followers into customers. I plan content, write scroll-stopping captions and hooks, design simple graphics, and reply to the community so the page feels alive.',
+      skills: 'Content planning, Caption writing, Hooks, Short-form video, Community management, Basic graphic design, Analytics, Trend research',
+      tools: 'Canva, CapCut, Meta Business Suite, TikTok, Instagram, Notion, Google Sheets',
+      projects: [
+        { title: 'Instagram page makeover (sample)', desc: 'Redesigned a local bakery\'s Instagram: new bio, highlight covers, and 9 post designs so the grid looks consistent.', result: '', link: '' },
+        { title: '30-day content calendar (sample)', desc: 'Planned a month of posts for a fashion brand, with post ideas, captions and posting times.', result: '', link: '' },
+        { title: 'Hooks & captions (sample)', desc: '10 short-form video hooks and captions written for a fitness coach\'s Reels and TikToks.', result: '', link: '' }
+      ],
+      quote: '', quoteBy: '',
+      certs: 'HubSpot Academy: Social Media Marketing (free)\nHubSpot Academy: Content Marketing (free)'
+    }
+  };
+
+  var STORE_KEY = 'bayzicks_portfolio_v1';
+  var state;
+
+  function freshState(role) {
+    var t = TEMPLATES[role];
+    return {
+      role: role,
+      accent: COLORS[0].v,
+      photo: '',
+      name: COMMON.name, location: COMMON.location, email: COMMON.email, linkedin: COMMON.linkedin, phone: COMMON.phone,
+      headline: t.headline, about: t.about, skills: t.skills, tools: t.tools,
+      projects: t.projects.map(function (p) { return { title: p.title, desc: p.desc, result: p.result, link: p.link }; }),
+      quote: t.quote, quoteBy: t.quoteBy, certs: t.certs
+    };
+  }
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (raw) { var s = JSON.parse(raw); if (s && TEMPLATES[s.role]) return s; }
+    } catch (e) {}
+    return null;
+  }
+  var saveTimer;
+  function save() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function () {
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {
+        try { var s = Object.assign({}, state, { photo: '' }); localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch (e2) {}
+      }
+    }, 300);
+  }
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function href(u) {
+    u = String(u || '').trim();
+    if (!u) return '';
+    if (!/^https?:\/\//i.test(u)) u = 'https://' + u;
+    return /^https?:\/\/[^\s"'<>]+$/i.test(u) ? u : '';
+  }
+  function splitList(s) { return String(s || '').split(/[,\n]/).map(function (x) { return x.trim(); }).filter(Boolean); }
+  function lines(s) { return String(s || '').split('\n').map(function (x) { return x.trim(); }).filter(Boolean); }
+  function initials(n) {
+    var p = String(n || '').trim().split(/\s+/).filter(Boolean);
+    return ((p[0] || '?')[0] + (p.length > 1 ? p[p.length - 1][0] : '')).toUpperCase();
+  }
+
+  // ROLE PICKER
+  var roleGrid = document.getElementById('roleGrid');
+  Object.keys(TEMPLATES).forEach(function (k) {
+    var t = TEMPLATES[k];
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'role-card'; b.dataset.role = k;
+    b.innerHTML = '<span class="ico" aria-hidden="true">' + t.icon + '</span><strong>' + esc(t.label) + '</strong><span class="d">' + esc(t.desc) + '</span>';
+    b.addEventListener('click', function () { chooseRole(k); });
+    roleGrid.appendChild(b);
+  });
+
+  function chooseRole(k) {
+    if (state && state.role === k) { scrollToWork(); return; }
+    var keepPersonal = state ? { name: state.name, location: state.location, email: state.email, linkedin: state.linkedin, phone: state.phone, photo: state.photo, accent: state.accent } : null;
+    state = freshState(k);
+    if (keepPersonal) Object.assign(state, keepPersonal);
+    fillForm(); render(); save(); markRole();
+    scrollToWork();
+  }
+  function scrollToWork() {
+    var el = document.getElementById('workspace');
+    if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function markRole() {
+    [].forEach.call(roleGrid.children, function (b) { b.setAttribute('aria-pressed', b.dataset.role === state.role ? 'true' : 'false'); });
+  }
+
+  // SWATCHES
+  var sw = document.getElementById('swatches');
+  COLORS.forEach(function (c) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'swatch'; b.style.background = c.v; b.dataset.v = c.v;
+    b.setAttribute('aria-label', c.name);
+    b.addEventListener('click', function () { state.accent = c.v; markSwatch(); render(); save(); });
+    sw.appendChild(b);
+  });
+  function markSwatch() { [].forEach.call(sw.children, function (b) { b.setAttribute('aria-pressed', b.dataset.v === state.accent ? 'true' : 'false'); }); }
+
+  // FORM BINDING
+  var editor = document.getElementById('editor');
+  [].forEach.call(editor.querySelectorAll('[data-key]'), function (el) {
+    el.addEventListener('input', function () { state[el.dataset.key] = el.value; render(); save(); });
+  });
+
+  var projWrap = document.getElementById('projects');
+  function buildProjects() {
+    projWrap.innerHTML = '';
+    state.projects.forEach(function (p, i) {
+      var d = document.createElement('div');
+      d.className = 'proj';
+      d.innerHTML =
+        '<h4>Project ' + (i + 1) + '</h4>' +
+        '<div class="field"><label for="p' + i + 't">Title</label><input id="p' + i + 't" data-f="title"></div>' +
+        '<div class="field"><label for="p' + i + 'd">What I did</label><textarea id="p' + i + 'd" data-f="desc" rows="3"></textarea></div>' +
+        '<div class="field"><label for="p' + i + 'r">Result (optional)</label><input id="p' + i + 'r" data-f="result" placeholder="e.g. Result: 40+ orders in 2 weeks"></div>' +
+        '<div class="field"><label for="p' + i + 'l">Link to the work (optional)</label><input id="p' + i + 'l" data-f="link" inputmode="url" placeholder="drive.google.com/..."></div>';
+      [].forEach.call(d.querySelectorAll('[data-f]'), function (el) {
+        el.value = p[el.dataset.f] || '';
+        el.addEventListener('input', function () { state.projects[i][el.dataset.f] = el.value; render(); save(); });
+      });
+      projWrap.appendChild(d);
+    });
+  }
+
+  function fillForm() {
+    [].forEach.call(editor.querySelectorAll('[data-key]'), function (el) { el.value = state[el.dataset.key] || ''; });
+    buildProjects(); markSwatch();
+  }
+
+  // PHOTO
+  document.getElementById('f-photo').addEventListener('change', function (e) {
+    var f = e.target.files && e.target.files[0];
+    if (!f) return;
+    var r = new FileReader();
+    r.onload = function () {
+      var img = new Image();
+      img.onload = function () {
+        var size = 320, c = document.createElement('canvas');
+        c.width = size; c.height = size;
+        var s = Math.min(img.width, img.height);
+        c.getContext('2d').drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, 0, 0, size, size);
+        state.photo = c.toDataURL('image/jpeg', 0.85);
+        render(); save();
+      };
+      img.src = r.result;
+    };
+    r.readAsDataURL(f);
+    e.target.value = '';
+  });
+  document.getElementById('removePhoto').addEventListener('click', function () { state.photo = ''; render(); save(); });
+
+  // RENDER PORTFOLIO
+  var pf = document.getElementById('pf');
+  function render() {
+    pf.style.setProperty('--accent', state.accent);
+    var h = '';
+    h += '<div class="pf-head">';
+    h += state.photo ? '<img class="pf-photo" src="' + state.photo + '" alt="">' : '<div class="pf-photo" aria-hidden="true">' + esc(initials(state.name)) + '</div>';
+    h += '<div><h1>' + esc(state.name || 'Your Name') + '</h1>';
+    if (state.headline) h += '<div class="pf-title">' + esc(state.headline) + '</div>';
+    if (state.location) h += '<div class="pf-loc">' + esc(state.location) + '</div>';
+    h += '</div></div><div class="pf-body">';
+
+    if (state.about.trim()) h += '<div class="pf-sec"><h2>About me</h2><p class="pf-about">' + esc(state.about.trim()) + '</p></div>';
+
+    var sk = splitList(state.skills);
+    if (sk.length) h += '<div class="pf-sec"><h2>Skills</h2><ul class="pf-chips">' + sk.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul></div>';
+
+    var pr = state.projects.filter(function (p) { return (p.title || '').trim() || (p.desc || '').trim(); });
+    if (pr.length) {
+      h += '<div class="pf-sec"><h2>Work samples</h2><div class="pf-projects">';
+      pr.forEach(function (p) {
+        h += '<div class="pf-proj">';
+        if (p.title.trim()) h += '<h3>' + esc(p.title) + '</h3>';
+        if (p.desc.trim()) h += '<p>' + esc(p.desc.trim()) + '</p>';
+        if ((p.result || '').trim()) h += '<p class="res">' + esc(p.result) + '</p>';
+        var l = href(p.link);
+        if (l) h += '<a href="' + esc(l) + '" target="_blank" rel="noopener">View the work →</a>';
+        h += '</div>';
+      });
+      h += '</div></div>';
+    }
+
+    if ((state.quote || '').trim()) {
+      h += '<div class="pf-sec"><h2>What clients say</h2><blockquote class="pf-quote" style="margin:0">“' + esc(state.quote.trim()) + '”';
+      if ((state.quoteBy || '').trim()) h += '<cite>— ' + esc(state.quoteBy) + '</cite>';
+      h += '</blockquote></div>';
+    }
+
+    var tl = splitList(state.tools);
+    if (tl.length) h += '<div class="pf-sec"><h2>Tools</h2><ul class="pf-chips soft">' + tl.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul></div>';
+
+    var ce = lines(state.certs);
+    if (ce.length) h += '<div class="pf-sec"><h2>Certificates</h2><ul class="pf-list">' + ce.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul></div>';
+
+    var ct = '';
+    if ((state.email || '').trim()) ct += '<div><b>Email</b> <a href="mailto:' + esc(state.email.trim()) + '">' + esc(state.email.trim()) + '</a></div>';
+    var li = href(state.linkedin);
+    if (li) ct += '<div><b>LinkedIn</b> <a href="' + esc(li) + '" target="_blank" rel="noopener">' + esc(state.linkedin.trim()) + '</a></div>';
+    if ((state.phone || '').trim()) ct += '<div><b>WhatsApp</b> ' + esc(state.phone.trim()) + '</div>';
+    if (ct) h += '<div class="pf-sec"><h2>Let\'s work together</h2><div class="pf-contact">' + ct + '</div></div>';
+
+    h += '</div><div class="pf-foot">Template by bayzicks.com</div>';
+    pf.innerHTML = h;
+  }
+
+  // VIEW TOGGLE (mobile)
+  var ws = document.getElementById('workspace');
+  var toggles = document.querySelectorAll('.view-toggle button');
+  [].forEach.call(toggles, function (b) {
+    b.addEventListener('click', function () {
+      ws.dataset.view = b.dataset.view;
+      [].forEach.call(toggles, function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });
+    });
+  });
+
+  // DOWNLOAD
+  [].forEach.call(document.querySelectorAll('[data-action="download"]'), function (b) {
+    b.addEventListener('click', function () {
+      var old = document.title;
+      document.title = (state.name || 'My') + ' - Portfolio';
+      window.print();
+      setTimeout(function () { document.title = old; }, 1000);
+    });
+  });
+
+  // RESET
+  document.getElementById('resetBtn').addEventListener('click', function () {
+    state = freshState(state.role);
+    fillForm(); render(); save();
+  });
+
+  // INIT
+  state = load() || freshState('sales');
+  var qp = new URLSearchParams(location.search).get('role');
+  if (qp && TEMPLATES[qp] && qp !== state.role && !load()) state = freshState(qp);
+  else if (qp && TEMPLATES[qp] && qp !== state.role) { chooseRole(qp); }
+  fillForm(); render(); markRole();
+})();
+</script>
+</body>
+</html>
