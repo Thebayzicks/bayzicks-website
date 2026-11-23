@@ -3,12 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Bayzicks: Digital work, explained from the start</title>
-<meta name="description" content="Bayzicks explains remote work, digital marketing, and tech in plain language for complete beginners and non-technical people who've bought courses but still don't have a clear path. Free coaching, a free 30-minute consultation, a free community, plus templates and tools to get started.">
-<meta property="og:title" content="Bayzicks: Digital work, explained from the start">
-<meta property="og:description" content="Remote work, digital marketing, and tech, broken down in plain language for beginners. Free coaching, free consultations, a free community, and practical templates to get you moving.">
+<title>Bayzicks | Understand the digital economy and find your place in it</title>
+<meta name="description" content="Bayzicks helps beginners understand the digital economy and find their place in it: remote work, digital skills and online income. Free guides.">
+<meta property="og:title" content="Bayzicks | Understand the digital economy and find your place in it">
+<meta property="og:description" content="Bayzicks helps beginners understand the digital economy and find their place in it: remote work, digital skills and online income. Free guides.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bayzicks.com/">
+<meta property="og:image" content="https://bayzicks.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:title" content="Bayzicks | Understand the digital economy and find your place in it">
+<meta name="twitter:description" content="Bayzicks helps beginners understand the digital economy and find their place in it: remote work, digital skills and online income. Free guides.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -234,6 +246,8 @@
   .email-inner { max-width: 560px; text-align: center; }
   .email-section h2 { color: var(--forest-deep); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; margin-bottom: 12px; }
   .email-section p.lead { color: var(--forest-deep); opacity: 0.85; margin-bottom: 28px; }
+  .consent-line { flex: 1 1 100%; display: flex; gap: 8px; align-items: flex-start; font-size: .85rem; line-height: 1.4; text-align: left; cursor: pointer; }
+  .consent-line input { margin-top: 3px; flex: 0 0 auto; }
   form.signup {
     display: flex;
     gap: 10px;
@@ -395,41 +409,22 @@
   .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 3px solid var(--amber); outline-offset: 1px; }
   .contact-note { margin-top: 12px; font-size: 0.85rem; color: var(--ink-soft); display: none; }
   .contact-note.show { display: block; }
-
-  /* PORTFOLIO PROMO BOX */
-  .pf-promo-wrap { background: var(--parchment); padding: 36px 20px 8px; }
-  .pf-promo {
-    max-width: 880px; margin: 0 auto; display: flex; align-items: center; gap: 24px;
-    background: var(--amber); color: var(--forest-deep); border-radius: 12px;
-    padding: 26px 28px; text-decoration: none; box-shadow: 0 10px 30px rgba(201,127,31,0.28);
-    transition: transform .15s ease, box-shadow .15s ease;
-  }
-  .pf-promo:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(201,127,31,0.38); }
-  .pf-promo:focus-visible { outline: 3px solid var(--forest); outline-offset: 3px; }
-  .pf-promo .pf-ico { font-size: 2.6rem; line-height: 1; flex-shrink: 0; }
-  .pf-promo .pf-txt { flex: 1; }
-  .pf-promo .pf-tag { display: inline-block; background: var(--forest); color: var(--parchment); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 8px; }
-  .pf-promo h2 { color: var(--forest-deep); font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 600; line-height: 1.2; margin-bottom: 6px; }
-  .pf-promo p { font-size: 1rem; color: #3A2A10; }
-  .pf-promo .pf-go { flex-shrink: 0; background: var(--forest); color: var(--parchment); font-weight: 700; padding: 14px 22px; border-radius: 6px; white-space: nowrap; }
-  @media (max-width: 640px) {
-    .pf-promo { flex-direction: column; align-items: flex-start; gap: 14px; padding: 22px 20px; }
-    .pf-promo .pf-go { width: 100%; text-align: center; }
-  }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Bayzicks","url":"https://bayzicks.com","logo":"https://bayzicks.com/icon-512.png","description":"Bayzicks helps beginners understand the digital economy and find their place in it.","email":"hello@bayzicks.com","sameAs":["https://www.instagram.com/bayzicks"]}
+</script>
 </head>
 <body>
 
   <nav class="site-nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">Bayzicks</a>
+      <a href="#" class="nav-logo" aria-label="Bayzicks home"><img src="logo-light.png" alt="Bayzicks" height="30" style="display:block;height:30px;width:auto;"></a>
       <div class="nav-links">
         <a href="#offers" class="hide-mobile">Offers</a>
         <a href="#email" class="hide-mobile">Free guides</a>
-        <a href="/portfolio" class="hide-mobile">Portfolio templates</a>
         <a href="#contact" class="hide-mobile" data-tab="contact">Contact</a>
         <a href="#contact" class="hide-mobile" data-tab="collab">Collaborate</a>
-        <a href="#offers" class="nav-cta">Get started</a>
+        <a href="find-your-path.html" class="nav-cta">Find your path</a>
       </div>
     </div>
   </nav>
@@ -439,9 +434,9 @@
     <div class="hero-inner">
       <span class="hero-eyebrow">BAYZICKS</span>
       <h1>You're not behind.<br>You just never had a map.</h1>
-      <p class="sub">We take the confusing world of remote work, digital marketing, and tech, and explain it like a friend who's already done it would.</p>
+      <p class="sub">Bayzicks helps you understand how the digital economy works and where you fit in: remote work, online skills, digital businesses and more, explained like a friend who has already done it.</p>
       <div class="cta-row">
-        <a href="#offers" class="btn btn-primary">Let's find your path</a>
+        <a href="find-your-path.html" class="btn btn-primary">Let's find your path</a>
         <a href="#email" class="btn btn-ghost">Get a free career guide</a>
       </div>
       <div class="hero-image">
@@ -449,19 +444,6 @@
       </div>
     </div>
   </section>
-
-  <!-- PORTFOLIO TEMPLATES PROMO -->
-  <div class="pf-promo-wrap">
-    <a href="/portfolio" class="pf-promo">
-      <span class="pf-ico" aria-hidden="true">📁</span>
-      <span class="pf-txt">
-        <span class="pf-tag">New · Free</span>
-        <h2>Free remote job portfolio templates</h2>
-        <p>For sales, virtual assistants, customer support and social media managers. Pick yours, edit it on your phone, download it as a PDF.</p>
-      </span>
-      <span class="pf-go">Get your template →</span>
-    </a>
-  </div>
 
   <div class="trail">
 
@@ -495,7 +477,7 @@
           <div class="offer-card">
             <h3>Coaching <span class="free-tag">Free</span></h3>
             <p>Ongoing guidance to build your path and actually stick to it, with someone checking in on your progress, at no cost.</p>
-            <a href="#" class="link">Book a free session →</a>
+            <a href="https://calendly.com/hello-bayzicks/30min" class="link" target="_blank" rel="noopener">Book a free session →</a>
           </div>
           <div class="offer-card">
             <h3>Recommended tool</h3>
@@ -505,7 +487,7 @@
           <div class="offer-card">
             <h3>1:1 consultation <span class="free-tag">Free</span></h3>
             <p>A focused, free 30-minute session to untangle exactly where you're stuck and map out what's next.</p>
-            <a href="#" class="link">Book your free 30 min →</a>
+            <a href="https://calendly.com/hello-bayzicks/30min" class="link" target="_blank" rel="noopener">Book your free 30 min →</a>
           </div>
           <div class="offer-card">
             <h3>Community <span class="free-tag">Free</span></h3>
@@ -513,7 +495,7 @@
             <a href="#" class="link">Join on Nestuge →</a>
           </div>
         </div>
-        <p style="margin-top:22px; color:#9FB3A9; font-size:0.95rem;">New: <a href="/portfolio" style="color:var(--amber); font-weight:700;">free remote work portfolio templates →</a> for sales, virtual assistants, customer support and social media managers.</p>
+        <p style="margin-top:22px; color:#9FB3A9; font-size:0.9rem;">Our own templates and tools are in the works, coming soon.</p>
       </div>
     </section>
 
@@ -537,6 +519,7 @@
           </fieldset>
           <input type="text" name="company_website" id="companyWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;">
           <input type="email" required placeholder="you@email.com" aria-label="Email address" id="emailInput">
+          <label class="consent-line"><input type="checkbox" id="consentBox"> <span>I agree to receive my free guide and the Bayzicks newsletter and marketing emails. I can unsubscribe at any time.</span></label>
           <button type="submit" class="btn btn-primary">Send me my guide</button>
         </form>
         <p class="form-success" id="formSuccess" role="status"></p>
@@ -653,12 +636,12 @@
 
   const SUBSCRIBE_ENDPOINT = "https://bayzicks-api.thebayzicks.workers.dev/subscribe";
 
-  async function subscribeEmail(email, guides, company_website) {
+  async function subscribeEmail(email, guides, company_website, consent) {
     try {
       const res = await fetch(SUBSCRIBE_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, guides, company_website }),
+        body: JSON.stringify({ email, guides, company_website, consent }),
       });
       return res.ok;
     } catch (err) {
@@ -682,10 +665,16 @@
       return;
     }
 
+    if (!document.getElementById('consentBox').checked) {
+      success.textContent = "Please tick the box to agree to receive emails.";
+      success.classList.add('show');
+      return;
+    }
+
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending...";
 
-    const ok = await subscribeEmail(email, guides, company_website);
+    const ok = await subscribeEmail(email, guides, company_website, true);
 
     const links = guides.map(function(g){
       return '<a href="' + GUIDE_URLS[g].url + '" target="_blank" rel="noopener">' + GUIDE_URLS[g].name + '</a>';

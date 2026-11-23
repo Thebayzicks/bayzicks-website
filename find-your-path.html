@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find your place in the digital economy | Bayzicks</title>
+<meta name="description" content="Answer a few quick questions and find beginner-friendly digital skills that fit you. Free, from Bayzicks.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bayzicks.com/find-your-path.html">
+<meta property="og:title" content="Find your place in the digital economy | Bayzicks">
+<meta property="og:description" content="Answer a few quick questions and find beginner-friendly digital skills that fit you.">
+<meta property="og:image" content="https://bayzicks.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:#16302B; --forest-deep:#0F221E; --parchment:#F0E6D2; --parchment-dim:#E7DBC0;
+    --amber:#E8A33D; --amber-deep:#C97F1F; --sage:#7FA98F; --ink:#22201B; --ink-soft:#4A463D;
+    color-scheme: light;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--parchment);color:var(--ink);font-family:'Karla',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.55;min-height:100vh;display:flex;flex-direction:column}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;color:var(--forest);margin:0;letter-spacing:-.01em}
+  a{color:inherit}
+  .top{background:var(--forest-deep);padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+  .top a{color:var(--parchment);text-decoration:none;font-family:'Fraunces',serif;font-weight:600}
+  .top .back{font-family:'Karla',sans-serif;font-weight:500;font-size:.9rem;opacity:.85}
+  main{flex:1;width:100%;max-width:640px;margin:0 auto;padding:20px 16px 120px}
+  .intro{text-align:center;padding:14px 0 6px}
+  .intro h1{font-size:1.7rem;line-height:1.2}
+  .intro p{color:var(--ink-soft);margin-top:8px;font-size:.98rem}
+  #chat{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+  .msg{max-width:88%;padding:12px 15px;border-radius:16px;font-size:1rem;animation:pop .25s ease}
+  .bot{background:#fff;border:1px solid var(--parchment-dim);align-self:flex-start;border-bottom-left-radius:4px}
+  .me{background:var(--forest);color:var(--parchment);align-self:flex-end;border-bottom-right-radius:4px}
+  @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;align-self:flex-start;max-width:100%}
+  .chip{font:inherit;font-size:.95rem;border:1.5px solid var(--forest);background:transparent;color:var(--forest);padding:9px 14px;border-radius:999px;cursor:pointer}
+  .chip.on{background:var(--forest);color:var(--parchment)}
+  .chip:focus-visible,.btn:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+  .btn{font:inherit;font-weight:700;border:0;border-radius:10px;padding:13px 18px;cursor:pointer;text-decoration:none;display:inline-block;text-align:center}
+  .btn-primary{background:var(--amber);color:var(--forest-deep)}
+  .btn-dark{background:var(--forest);color:var(--parchment)}
+  .btn-ghost{background:transparent;border:1.5px solid var(--forest);color:var(--forest)}
+  .btn[disabled]{opacity:.5;cursor:default}
+  .composer{position:fixed;left:0;right:0;bottom:0;background:var(--parchment);border-top:1px solid var(--parchment-dim);padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px))}
+  .composer form{max-width:640px;margin:0 auto;display:flex;gap:8px;align-items:flex-end}
+  .composer textarea,.composer input[type=text],.composer input[type=email]{flex:1;font:inherit;font-size:16px;padding:11px 13px;border:1.5px solid var(--forest);border-radius:12px;background:#fff;color:var(--ink);resize:none}
+  .composer.hidden{display:none}
+  .consent{max-width:640px;margin:0 auto 8px;display:flex;gap:8px;font-size:.85rem;line-height:1.35;color:var(--ink-soft)}
+  .consent input{margin-top:3px}
+  .consent.hidden{display:none}
+  .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+  .typing{display:inline-flex;gap:4px}
+  .typing i{width:7px;height:7px;border-radius:50%;background:var(--sage);animation:b 1s infinite}
+  .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+  @keyframes b{0%,80%,100%{transform:scale(.6);opacity:.5}40%{transform:scale(1);opacity:1}}
+  .card{background:#fff;border:1px solid var(--parchment-dim);border-radius:14px;padding:16px;align-self:stretch;animation:pop .3s ease}
+  .card h3{font-size:1.25rem}
+  .card .why{color:var(--ink-soft);font-size:.92rem;margin:6px 0 10px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+  .tag{font-size:.8rem;font-weight:600;background:var(--parchment);border-radius:999px;padding:4px 10px;color:var(--forest)}
+  .tag.gem{background:var(--amber);color:var(--forest-deep)}
+  .locked{margin:12px 0 0;padding:0;list-style:none;border-top:1px dashed var(--parchment-dim)}
+  .locked li{display:flex;gap:8px;padding:8px 0;border-bottom:1px dashed var(--parchment-dim);color:#8a8473;font-size:.92rem}
+  .next{background:var(--forest);color:var(--parchment);border-radius:14px;padding:18px;align-self:stretch;animation:pop .3s ease}
+  .next h3{color:var(--parchment);font-size:1.3rem}
+  .next p{margin:8px 0 12px;opacity:.92;font-size:.95rem}
+  .next .opt{background:rgba(255,255,255,.07);border-radius:12px;padding:14px;margin-top:10px}
+  .next .opt strong{display:block;margin-bottom:2px}
+  .next .btn{margin-top:8px;width:100%}
+  .note{font-size:.8rem;color:var(--ink-soft);text-align:center;margin-top:16px}
+  .err{color:#9b2c1a;font-size:.9rem;align-self:flex-start}
+</style>
+</head>
+<body>
+<div class="top"><a href="/" aria-label="Bayzicks home"><img src="logo-light.png" alt="Bayzicks" style="display:block;height:28px;width:auto;"></a><a class="back" href="/">Back to site</a></div>
+<main>
+  <div class="intro">
+    <h1>Let's find your path</h1>
+    <p>A few quick questions. No wrong answers, and no experience needed.</p>
+  </div>
+  <div id="chat" aria-live="polite"></div>
+  <p class="note">This is guidance, not a promise of income. Earnings and results vary.</p>
+</main>
+
+<div class="composer hidden" id="composer">
+  <div class="consent hidden" id="consentWrap">
+    <input type="checkbox" id="consent">
+    <label for="consent">I agree to receive my results, the Bayzicks newsletter and marketing emails. I can unsubscribe at any time.</label>
+  </div>
+  <form id="form" autocomplete="off">
+    <input type="text" id="hp" class="hp" tabindex="-1" aria-hidden="true" autocomplete="off">
+    <input id="field" type="text" placeholder="Type here" aria-label="Your answer">
+    <button class="btn btn-primary" id="send" type="submit">Send</button>
+  </form>
+</div>
+
+<script>
+(function(){
+  /* ---------- SETTINGS (edit these) ---------- */
+  var INTAKE_URL = "https://bayzicks-api.thebayzicks.workers.dev/intake";
+  var ROADMAP_URL = "https://selar.com/w1s276212u";
+  var BROCHURE_URL = "https://selar.com/d816r9bb39";
+  var FREE_GUIDE_URL = "25-Remote-Skills-to-Jump-On.pdf";
+  var BOOKING_URL = "https://calendly.com/hello-bayzicks/30min";   // put your free Calendly link here, between the quotes
+  /* ------------------------------------------- */
+
+  /* Skills. i = interests, lv = beginner level, cost 0 low / 1 low-plus / 2 medium,
+     dev = needs, speed 1 fast to 3 slower, goals = side, job, biz */
+  var SKILLS = [
+    {n:"Online Seller (Social Commerce)",d:"Take what you already make or sell online and get customers through WhatsApp, Instagram and TikTok.",i:["trade","sell","create"],lv:1,cost:0,dev:"phone",speed:1,goals:["side","biz"]},
+    {n:"Affiliate Marketer",d:"Earn commissions by recommending other companies' products to the right people.",i:["trade","sell","write","create"],lv:1,cost:0,dev:"phone",speed:2,goals:["side","biz"]},
+    {n:"Digital Marketer for Small Businesses",d:"Help local businesses find customers online with posts, ads and simple campaigns.",i:["trade","sell","create","write"],lv:2,cost:0,dev:"phone",speed:2,goals:["side","biz","job"]},
+    {n:"Sales Operations Assistant",d:"Support a sales team by keeping leads, follow-ups and customer records organised.",i:["trade","organise","sell"],lv:2,cost:0,dev:"laptop",speed:2,goals:["job","side"]},
+    {n:"Data Analyst",d:"Use Excel, SQL and dashboards to find answers in a company's data.",i:["numbers","tech"],lv:3,cost:0,dev:"laptop",speed:3,goals:["job","side"]},
+    {n:"Business Intelligence Analyst",d:"Build reports and dashboards that help leaders make decisions.",i:["numbers","tech","organise"],lv:3,cost:0,dev:"laptop",speed:3,goals:["job"]},
+    {n:"Remote Bookkeeper / Accountant",d:"Keep the books and finances in order for businesses, from anywhere.",i:["numbers","organise"],lv:3,cost:0,dev:"laptop",speed:2,goals:["job","side","biz"]},
+    {n:"Financial Analyst (Remote)",d:"Study financial data and build models that guide business decisions.",i:["numbers"],lv:3,cost:1,dev:"laptop",speed:3,goals:["job"]},
+    {n:"Software Tester (QA)",d:"Find bugs in apps and websites before customers do.",i:["tech","organise"],lv:3,cost:0,dev:"laptop",speed:2,goals:["job","side"]},
+    {n:"Web Developer",d:"Build and maintain websites and web apps for clients and companies.",i:["tech","create","numbers"],lv:3,cost:0,dev:"laptop",speed:3,goals:["job","side","biz"]},
+    {n:"Technical Writer",d:"Turn complicated products into clear guides and help articles.",i:["write","tech"],lv:3,cost:0,dev:"laptop",speed:2,goals:["job","side"]},
+    {n:"Project Manager (Remote)",d:"Plan work, keep teams on schedule and deliver projects on time.",i:["organise","talk"],lv:3,cost:1,dev:"laptop",speed:3,goals:["job"]},
+    {n:"Business Analyst",d:"Understand what a business needs and turn it into clear requirements for tech teams.",i:["numbers","organise","talk"],lv:3,cost:0,dev:"laptop",speed:3,goals:["job"]},
+    {n:"Cybersecurity GRC Analyst",d:"Help companies follow security rules and manage risk.",i:["organise","tech","numbers"],lv:3,cost:1,dev:"laptop",speed:3,goals:["job"],gem:true},
+    {n:"General Virtual Assistant",d:"Help busy people and small businesses with emails, scheduling and everyday admin.",i:["organise","write"],lv:1,cost:0,dev:"laptop",speed:1,goals:["side","job"]},
+    {n:"Customer Support Agent",d:"Answer customers' questions by chat and email for online companies.",i:["trade","talk","write"],lv:1,cost:0,dev:"laptop",speed:1,goals:["job","side"]},
+    {n:"Appointment Setter",d:"Reach out to potential customers and book their calls for a business.",i:["trade","talk","sell"],lv:1,cost:0,dev:"phone",speed:1,goals:["side","job"]},
+    {n:"UGC Creator",d:"Make short videos and photos that brands use in their ads.",i:["trade","create"],lv:1,cost:1,dev:"phone",speed:2,goals:["side","biz"]},
+    {n:"Social Media Manager",d:"Plan, post and grow a brand's social media accounts.",i:["trade","create","write","organise"],lv:2,cost:0,dev:"phone",speed:2,goals:["side","job","biz"]},
+    {n:"Copywriter",d:"Write the words on ads, pages and emails that make people buy.",i:["write","sell"],lv:2,cost:0,dev:"laptop",speed:2,goals:["side","job","biz"]},
+    {n:"Video Editor",d:"Turn raw footage into polished videos for creators and brands.",i:["create","tech"],lv:2,cost:1,dev:"phone",speed:2,goals:["side","job","biz"]},
+    {n:"Online Tutor",d:"Teach what you already know to learners online.",i:["teach","talk"],lv:1,cost:0,dev:"phone",speed:1,goals:["side","biz"]},
+    {n:"Community Manager",d:"Look after a brand's online community and keep people engaged.",i:["trade","talk","organise"],lv:1,cost:0,dev:"phone",speed:2,goals:["side","job"]},
+    {n:"SME Digitisation Helper",d:"Help small local businesses get online, from catalogues to simple pages.",i:["trade","tech","sell","talk","organise"],lv:1,cost:0,dev:"phone",speed:1,goals:["side","biz"]},
+    {n:"Email & Lifecycle Marketer",d:"Write and automate the emails that turn subscribers into buyers.",i:["write","numbers"],lv:2,cost:0,dev:"laptop",speed:2,goals:["job","side"]},
+    {n:"SEO Specialist",d:"Help websites show up on Google so more people find them.",i:["numbers","write","tech"],lv:2,cost:0,dev:"laptop",speed:3,goals:["job","side","biz"]},
+    {n:"No-Code Data Analyst",d:"Turn numbers into clear answers for a business, without heavy coding.",i:["numbers","tech"],lv:2,cost:0,dev:"laptop",speed:2,goals:["job","side"]},
+    {n:"Automation Specialist",d:"Connect apps so a business's repeat tasks run on their own.",i:["tech","organise","numbers"],lv:2,cost:0,dev:"laptop",speed:2,goals:["job","side","biz"],gem:true},
+    {n:"AI Trainer",d:"Help improve AI tools by reviewing and rating their answers.",i:["write","tech"],lv:1,cost:0,dev:"laptop",speed:1,goals:["side","job"],gem:true},
+    {n:"Affiliate Manager",d:"Run a company's affiliate programme and work with the people who promote it.",i:["sell","organise","talk"],lv:2,cost:0,dev:"laptop",speed:2,goals:["job","side"],gem:true},
+    {n:"Partnerships Manager",d:"Build relationships with other businesses that bring the company customers.",i:["talk","sell"],lv:2,cost:0,dev:"laptop",speed:3,goals:["job"],gem:true},
+    {n:"Creator Partnerships Manager",d:"Find creators for a brand, agree deals and manage the campaigns.",i:["talk","create","sell"],lv:2,cost:0,dev:"laptop",speed:3,goals:["job","side"],gem:true},
+    {n:"Growth Marketer",d:"Run fast experiments to grow a company's signups and sales.",i:["numbers","sell","tech"],lv:2,cost:0,dev:"laptop",speed:3,goals:["job"]},
+    {n:"Sales Development Representative",d:"Contact potential customers and book meetings for a sales team.",i:["trade","talk","sell"],lv:1,cost:0,dev:"laptop",speed:1,goals:["job"]},
+    {n:"High-Ticket Closer",d:"Talk to interested buyers on calls and close higher-priced offers.",i:["talk","sell"],lv:2,cost:0,dev:"laptop",speed:2,goals:["side","job"],gem:true},
+    {n:"Customer Success Manager",d:"Help paying customers get results so they stay with a company.",i:["talk","organise"],lv:2,cost:0,dev:"laptop",speed:3,goals:["job"]},
+    {n:"Paid Ads Specialist",d:"Run and improve paid ads for businesses on Meta, Google and TikTok.",i:["numbers","sell","tech"],lv:2,cost:1,dev:"laptop",speed:3,goals:["job","side","biz"]},
+    {n:"Amazon & E-commerce Specialist",d:"Help online stores list, manage and sell products.",i:["sell","organise"],lv:2,cost:1,dev:"laptop",speed:3,goals:["job","side","biz"]},
+    {n:"Online Business Manager",d:"Keep an online business running smoothly day to day.",i:["organise"],lv:2,cost:0,dev:"laptop",speed:3,goals:["job","side"],gem:true},
+    {n:"Course Launch Manager",d:"Help creators plan and run the launch of an online course.",i:["organise","teach","sell"],lv:2,cost:0,dev:"laptop",speed:3,goals:["job","side"],gem:true},
+    {n:"UI/UX Designer",d:"Design apps and websites that are easy and pleasant to use.",i:["create","tech"],lv:2,cost:0,dev:"laptop",speed:3,goals:["job","side"]},
+    {n:"Product Operations Specialist",d:"Keep a software product's teams and processes organised.",i:["organise","tech"],lv:2,cost:0,dev:"laptop",speed:3,goals:["job"],gem:true}
+  ];
+
+  /* words people type -> interest */
+  var WORDS = {
+    talk:["talk","speak","people","chat","call","communicat","friendly","customer"],
+    write:["write","writing","blog","content","caption","english","essay","story"],
+    create:["design","video","edit","photo","creative","canva","draw","film","tiktok","reels"],
+    numbers:["number","math","data","excel","analy","account","finance","logic","stat","sql","python","power bi","tableau","dashboard","bookkeep","audit","econom","engineer","actuar","spreadsheet"],
+    organise:["organi","plan","schedule","admin","detail","manage","coordinate","secretar"],
+    sell:["sell","sales","market","negotiat","persuad","business","promot","affiliate"],
+    teach:["teach","tutor","explain","lecture","train","mentor","coach"],
+    trade:["bak","cake","shoe","cobbler","tailor","sew","fashion","cloth","hair","makeup","make-up","catering","cook","food","bag","trader","shop","store","vendor","farm","carpent","plumb","electric","mechanic","driver","craft","bead","jewel","furniture","salon","barber","painter","provision","retail","vocational","i sell","i make","handmade"],
+    tech:["tech","computer","software","app","code","coding","program","develop","javascript","html","cyber","network","it support","it ","automat","website","internet"]
+  };
+
+  var A = {name:"",strong:[],strongText:"",goal:"",budget:"",device:"",time:"",background:"",email:""};
+  var chat = document.getElementById("chat");
+  var composer = document.getElementById("composer");
+  var field = document.getElementById("field");
+  var form = document.getElementById("form");
+  var consentWrap = document.getElementById("consentWrap");
+  var consent = document.getElementById("consent");
+  var sendBtn = document.getElementById("send");
+  var handler = null;
+
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  function scrollDown(){ window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"}); }
+  function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
+  function addEl(html,cls){var d=document.createElement("div");d.className=cls;d.innerHTML=html;chat.appendChild(d);scrollDown();return d;}
+  async function bot(text){
+    var t=addEl('<span class="typing"><i></i><i></i><i></i></span>',"msg bot");
+    await sleep(550);
+    t.innerHTML=esc(text);scrollDown();
+  }
+  function me(text){addEl(esc(text),"msg me");}
+  function showComposer(opts){
+    composer.classList.remove("hidden");
+    field.type=opts.type||"text"; field.placeholder=opts.placeholder||"Type here"; field.value="";
+    field.setAttribute("inputmode",opts.type==="email"?"email":"text");
+    consentWrap.classList.toggle("hidden",!opts.consent);
+    sendBtn.textContent=opts.button||"Send";
+    setTimeout(function(){field.focus({preventScroll:true});},50);
+  }
+  function hideComposer(){composer.classList.add("hidden");}
+
+  function askText(opts){ /* resolves with text */
+    return new Promise(function(res){
+      showComposer(opts);
+      handler=function(){
+        var v=field.value.trim();
+        if(!v&&!opts.optional){return;}
+        if(opts.type==="email"&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){field.setCustomValidity("x");field.reportValidity();field.setCustomValidity("");return;}
+        if(opts.consent&&!consent.checked){alert("Please tick the box to agree to receive emails.");return;}
+        handler=null;hideComposer();
+        if(v) me(v);
+        res(v);
+      };
+    });
+  }
+  function askChoice(options,multi){
+    return new Promise(function(res){
+      var box=document.createElement("div");box.className="chips";
+      var picked=[];
+      options.forEach(function(o){
+        var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=o.label;
+        b.onclick=function(){
+          if(!multi){box.remove();me(o.label);res(o);return;}
+          var k=picked.indexOf(o);
+          if(k>-1){picked.splice(k,1);b.classList.remove("on");}else{picked.push(o);b.classList.add("on");}
+          done.disabled=picked.length===0;
+        };
+        box.appendChild(b);
+      });
+      var done;
+      if(multi){
+        done=document.createElement("button");done.type="button";done.className="btn btn-dark";done.textContent="Done";done.disabled=true;
+        done.onclick=function(){box.remove();me(picked.map(function(p){return p.label;}).join(", "));res(picked);};
+        box.appendChild(done);
+      }
+      chat.appendChild(box);scrollDown();
+    });
+  }
+  form.addEventListener("submit",function(e){e.preventDefault();if(handler)handler();});
+
+  function keywordInterests(text){
+    var t=text.toLowerCase(),found=[];
+    Object.keys(WORDS).forEach(function(k){
+      if(WORDS[k].some(function(w){return t.indexOf(w)>-1;}))found.push(k);
+    });
+    return found;
+  }
+  var LABELS={trade:"making or selling things",talk:"talking to people",write:"writing",create:"creative work",numbers:"numbers and logic",organise:"organising",sell:"selling",teach:"teaching",tech:"tech",};
+
+  function hitsCount(s,ints){return s.i.filter(function(x){return ints.indexOf(x)>-1;}).length;}
+  function score(){
+    var ints=A.strong.slice();
+    keywordInterests(A.strongText+" "+A.background).forEach(function(k){if(ints.indexOf(k)<0)ints.push(k);});
+    A.interests=ints;
+    var budgetMax={"0":0,"1":1,"2":2,"3":2}[A.budgetKey];
+    var out=SKILLS.map(function(s){
+      var sc=0,hits=s.i.filter(function(x){return ints.indexOf(x)>-1;});
+      sc+=hits.length*3;
+      if(A.expKey==="none"){ if(s.lv===1)sc+=2; if(s.lv===3)sc-=5; }
+      else if(A.expKey==="some"){ if(s.lv===1)sc+=1; if(s.lv===3&&hitsCount(s,ints)>=2)sc+=1.5; if(s.lv===2)sc+=0.5; }
+      else { if(s.lv===1)sc-=0.5; if(s.lv===2)sc+=1; if(s.lv===3)sc+=2; }
+      if(ints.indexOf("trade")>-1&&s.i.indexOf("trade")>-1)sc+=3;
+      var typed=(A.strongText+" "+A.background).toLowerCase();
+      var nm=s.n.toLowerCase().replace(/[^a-z ]/g," ").split(" ").filter(function(w){return w.length>3;});
+      var nmHit=nm.filter(function(w){return typed.indexOf(w.slice(0,5))>-1;}).length;
+      if(nmHit)sc+=Math.min(4,nmHit*2);
+      if(s.goals.indexOf(A.goalKey)>-1)sc+=2;
+      if(A.deviceKey==="phone"&&s.dev==="laptop")sc-=6;
+      if(s.cost>budgetMax)sc-=4;
+      if(A.timeKey==="short"&&s.speed===3)sc-=2;
+      if(A.goalKey==="side"&&s.speed===1)sc+=1;
+      if(A.goalKey==="job"&&s.lv===2)sc+=0.5;
+      return {s:s,score:sc,hits:hits};
+    }).sort(function(a,b){return b.score-a.score;});
+    return out.slice(0,3);
+  }
+  function why(m){
+    var parts=[];
+    if(m.hits.length)parts.push("You said you enjoy "+m.hits.map(function(h){return LABELS[h];}).slice(0,2).join(" and ")+".");
+    parts.push(m.s.dev==="phone"?"You can start with just a phone.":"You will need a laptop for this one.");
+    return parts.join(" ");
+  }
+  function costLabel(c){return c===2?"Medium":"Low";}
+
+  function lockedRows(){
+    return ["First 3 steps to start","What it pays (estimates)","Where to find work","Job titles to search","Skills and tools to learn"]
+      .map(function(r){return '<li><span aria-hidden="true">🔒</span><span>'+r+'</span></li>';}).join("");
+  }
+
+  async function run(){
+    await bot("Hi! I'm the Bayzicks path finder. In about 2 minutes I'll match you with beginner-friendly digital skills. What's your first name?");
+    A.name=await askText({placeholder:"Your first name",optional:true,button:"Next"})||"";
+    await bot((A.name?"Nice to meet you, "+A.name+"! ":"")+"What are you good at, or enjoy doing? Pick all that fit.");
+    var s=await askChoice([
+      {label:"Talking to people",v:"talk"},{label:"Writing",v:"write"},{label:"Creative work",v:"create"},
+      {label:"Numbers and logic",v:"numbers"},{label:"Organising things",v:"organise"},{label:"Selling",v:"sell"},
+      {label:"Making or selling things (baking, fashion, crafts, trading)",v:"trade"},{label:"Teaching or explaining",v:"teach"},{label:"Tech and computers",v:"tech"},{label:"Not sure yet",v:"none"}
+    ],true);
+    A.strong=s.map(function(x){return x.v;}).filter(function(v){return v!=="none";});
+    A.strongLabels=s.map(function(x){return x.label;});
+    await bot("Anything else you're good at, or things people often ask you for help with? Type a few words, or skip.");
+    A.strongText=await askText({placeholder:"e.g. I draw, I'm good with Excel",optional:true,button:"Next"});
+    await bot("What is your main goal?");
+    var g=await askChoice([
+      {label:"Earn some side income",v:"side"},{label:"Get a remote job",v:"job"},
+      {label:"Build my own online business",v:"biz"},{label:"Not sure, just exploring",v:"side"}
+    ]);
+    A.goal=g.label;A.goalKey=g.v;
+    await bot("How much can you spend to get started, on a course, tools or data?");
+    var b=await askChoice([
+      {label:"Almost nothing (free only)",v:"0"},{label:"Under ₦50,000",v:"1"},
+      {label:"₦50,000 to ₦200,000",v:"2"},{label:"More than ₦200,000",v:"3"}
+    ]);
+    A.budget=b.label;A.budgetKey=b.v;
+    await bot("What do you have to work with right now?");
+    var d=await askChoice([
+      {label:"A phone only",v:"phone"},{label:"A phone and a laptop",v:"laptop"},{label:"A laptop",v:"laptop"}
+    ]);
+    A.device=d.label;A.deviceKey=d.v;
+    await bot("How would you describe your experience so far in any kind of work?");
+    var x=await askChoice([
+      {label:"Complete beginner",v:"none"},{label:"Some experience or training",v:"some"},{label:"Experienced professional",v:"pro"}
+    ]);
+    A.experience=x.label;A.expKey=x.v;
+    await bot("How much time can you give this each day?");
+    var t=await askChoice([
+      {label:"Under 1 hour",v:"short"},{label:"1 to 2 hours",v:"mid"},{label:"3 hours or more",v:"long"}
+    ]);
+    A.time=t.label;A.timeKey=t.v;
+    await bot("Tell me a little about your background in a sentence or two: what you studied, or the work you have done. It's fine if it has nothing to do with computers.");
+    A.background=await askText({placeholder:"e.g. I studied biology and I work in an office",optional:true,button:"Next"});
+    await bot("Almost done! Where should I send your results? I'll also keep a note of your answers so I can help you further.");
+    A.email=await askText({type:"email",placeholder:"you@email.com",consent:true,button:"Show my path"});
+
+    var matches=score();
+    await bot("Give me a second while I match your answers...");
+    var ok=await save(matches);
+    if(!ok){
+      addEl("I couldn't save your answers just now. Please check your internet and refresh this page to try again.","err");
+      return;
+    }
+    await bot((A.name?A.name+", ":"")+"here are the 3 skills that fit you best right now:");
+    matches.forEach(function(m,idx){
+      var tags='<span class="tag">Beginner-friendly: '+(m.s.lv===1?"Yes":m.s.lv===2?"With preparation":"Best with some experience")+'</span>'+
+               '<span class="tag">Start cost: '+costLabel(m.s.cost)+'</span>'+
+               '<span class="tag">'+(m.s.dev==="phone"?"Phone is enough":"Laptop needed")+'</span>'+
+               (m.s.gem?'<span class="tag gem">Hidden gem</span>':"");
+      addEl('<h3>'+(idx+1)+'. '+esc(m.s.n)+'</h3><p class="why">'+esc(m.s.d)+'</p><p class="why"><strong>Why it fits you:</strong> '+esc(why(m))+'</p><div class="tags">'+tags+'</div><ul class="locked">'+lockedRows()+'</ul>',"card");
+    });
+    if(A.interests.indexOf("trade")>-1){
+      await bot("One more thing. The hands-on skill you already have is a real advantage, because you know what customers actually want. You have two good routes: take what you do online with digital and affiliate marketing, or use your people skills in sales and customer support. Choosing the right one for you, and narrowing it down to one clear plan, is exactly what the roadmap and a free consultation are for.");
+    }
+    await bot("The full details for each skill, including the steps, the pay estimates and where to find work, are in the brochure and in your personal roadmap. Here is how you can go next:");
+    var booking=BOOKING_URL?'<div class="opt"><strong>Talk it through with me</strong>Book a free consultation and we will look at your answers together.<a class="btn btn-ghost" style="color:var(--parchment);border-color:var(--parchment)" href="'+BOOKING_URL+'" target="_blank" rel="noopener">Book a free consultation</a></div>':"";
+    addEl('<h3>Your next step</h3>'+
+      '<div class="opt"><strong>Get your personal roadmap (₦3,000)</strong>A plan written just for you: your best-fit skill, your first steps, where to learn and who to learn from. Delivered by email within 24 hours.<a class="btn btn-primary" href="'+ROADMAP_URL+'" target="_blank" rel="noopener">Get my personal roadmap</a><p style="font-size:.8rem;margin:8px 0 0;opacity:.8">Please use the same email you gave here ('+esc(A.email)+') when you pay.</p></div>'+
+      booking+
+      '<div class="opt"><strong>See all 524 skills</strong>Every skill with its steps, pay estimates and where to find work.<a class="btn btn-ghost" style="color:var(--parchment);border-color:var(--parchment)" href="'+BROCHURE_URL+'" target="_blank" rel="noopener">Open the full brochure</a></div>'+
+      '<div class="opt"><strong>Start free</strong>Read the free guide to 25 remote skills.<a class="btn btn-ghost" style="color:var(--parchment);border-color:var(--parchment)" href="'+FREE_GUIDE_URL+'" target="_blank" rel="noopener">Open the free guide</a></div>',"next");
+  }
+
+  async function save(matches){
+    try{
+      var r=await fetch(INTAKE_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+        email:A.email,name:A.name,consent:true,company_website:document.getElementById("hp").value,
+        answers:{strengths:A.strongLabels.join(", "),strengthsExtra:A.strongText,goal:A.goal,budget:A.budget,device:A.device,time:A.time,experience:A.experience,background:A.background},
+        matches:matches.map(function(m){return m.s.n;})
+      })});
+      return r.ok;
+    }catch(e){return false;}
+  }
+  run();
+})();
+</script>
+</body>
+</html>
